@@ -83,7 +83,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Text model request
     let message_for_qwen = json!({
         "role": "user",
-        "content": format!("Please provide a concise response to this, keeping it short but show your calculations and answer in the same language as the input: {}", extracted_text)
+        "content": format!("Please provide a concise response to this, keeping it short but show your calculations (in LaTeX) and answer in the same language as the input: {}", extracted_text)
     });
 
     let request_body_qwen = json!({
