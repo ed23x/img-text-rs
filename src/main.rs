@@ -49,7 +49,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "model": "llama-3.2-11b-vision-preview",
         "messages": [message_for_vision],
         "temperature": 0,
-        "max_tokens": 1000
+        "max_tokens": 7000
     });
 
     let response_vision = client
@@ -86,7 +86,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "model": "qwen-qwq-32b",
         "messages": [message_for_qwen],
         "temperature": 0,
-        "max_tokens": 1000
+        "max_tokens": 6000
     });
 
     let response_qwen = client
