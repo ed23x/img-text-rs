@@ -53,7 +53,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "model": "llama-3.2-11b-vision-preview",
         "messages": [message_for_vision],
         "temperature": 0,
-        "max_tokens": 7000
+        "max_tokens": 1000
     });
 
     let response_vision = client
@@ -83,7 +83,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Text model request
     let message_for_qwen = json!({
         "role": "user",
-        "content": extracted_text
+        "content": format!("Please provide a concise response to this, keeping it short and in the same language as the input: {}", extracted_text)
     });
 
     let request_body_qwen = json!({
