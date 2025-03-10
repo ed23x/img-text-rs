@@ -1,4 +1,5 @@
 use base64;
+use dotenv::dotenv;
 use reqwest::Client;
 use serde_json::json;
 use std::env;
@@ -16,6 +17,9 @@ fn get_mime_type(path: &str) -> &'static str {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Load environment variables from .env file
+    dotenv().ok();
+
     // Check for command-line argument
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
@@ -40,7 +44,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let message_for_vision = json!({
         "role": "user",
         "content": [
-            {"type": "text", "text": "Extract all the text from this image."},
+            {"type": "text", "text": "Extract all the text from this image. Only return the exact text you see without any additional explanation, analysis, or context. Do not describe the image or its content, just transcribe any text you can see."},
             {"type": "image_url", "image_url": {"url": data_url}}
         ]
     });
